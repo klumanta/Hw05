@@ -12,18 +12,18 @@
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/search_button"
+        android:id="@+id/movies_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Search"
-        android:layout_below="@id/et_search_box" />
+        android:text="Search Movies"
+        android:layout_below="@id/et_search_box"/>
 
     <Button
         android:id="@+id/reset_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Reset"
-        android:layout_below="@id/search_button"/>
+        android:layout_below="@id/movies_button"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -40,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:scrollbars="vertical"
-                android:text="Restaurants:" />
+                android:text="Movies:" />
         </LinearLayout>
     </ScrollView>
 
