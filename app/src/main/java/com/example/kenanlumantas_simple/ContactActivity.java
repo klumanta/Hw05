@@ -13,7 +13,6 @@ public class ContactActivity extends AppCompatActivity {
 
     private TextView mDisplayAboutTextView;
     private Button mOpenWebpageButton;
-    private Button mOpenMapButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +22,6 @@ public class ContactActivity extends AppCompatActivity {
         // Connect UI
         mDisplayAboutTextView = (TextView) findViewById(R.id.tv_about_text);
         mOpenWebpageButton = (Button) findViewById(R.id.button_open_webpage);
-        mOpenMapButton = (Button) findViewById(R.id.button_open_map);
 
         // Grab data
         Intent intentThatStartedThisActivity = getIntent();
@@ -33,7 +31,7 @@ public class ContactActivity extends AppCompatActivity {
             mDisplayAboutTextView.append("\n\n\n" + message);
         }
 
-        final String urlString = "https://cse.nd.edu/";
+        final String urlString = "https://www.linkedin.com/in/kenan-lumantas-0665b8193?trk=people-guest_people_search-card";
 
         // Web page button
         mOpenWebpageButton.setOnClickListener(
@@ -45,26 +43,6 @@ public class ContactActivity extends AppCompatActivity {
                 }
         );
 
-        // Map button
-        mOpenMapButton.setOnClickListener(
-                new View.OnClickListener(){
-                    @Override
-                    public void onClick(View v){
-                        openMap();
-                    }
-                }
-        );
-    }
-
-    public void openMap(){
-        String addressString = "University of Notre Dame, IN";
-        Uri addressUri = Uri.parse("geo:0,0").buildUpon().appendQueryParameter("q", addressString).build();
-        Intent openMapIntent = new Intent(Intent.ACTION_VIEW);
-        openMapIntent.setData(addressUri);
-
-        if(openMapIntent.resolveActivity(getPackageManager()) != null){
-            startActivity(openMapIntent);
-        }
     }
 
     public void openWebPage(String urlString){

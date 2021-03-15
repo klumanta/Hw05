@@ -10,7 +10,8 @@
         android:id="@+id/tv_about_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello there!"/>
+        android:text="Hello there! I am Kenan Lumantas, the creator of this app.
+            Down below is my LinkedIn if you would like to connect!"/>
 
     <Button
         android:id="@+id/button_open_webpage"
@@ -19,12 +20,5 @@
         android:layout_below="@id/tv_about_text"
         android:text="Open web page"
         />
-
-    <Button
-        android:id="@+id/button_open_map"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/button_open_webpage"
-        android:text="Open map" />
 
 </RelativeLayout>

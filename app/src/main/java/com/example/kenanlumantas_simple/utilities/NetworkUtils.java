@@ -43,26 +43,26 @@ public class NetworkUtils {
 
     }
 
-    public static ArrayList<String> parseMoviesJson(String responseText){
-        ArrayList<String> movies = new ArrayList<String>();
+    public static ArrayList<String> parseMeteorsJson(String responseText){
+        ArrayList<String> meteors = new ArrayList<String>();
 
         try {
             Log.d("debugging", "ResponseText from url: " + responseText);
             JSONArray jsonArr = new JSONArray(responseText);
             Log.d("debugging", "JSONArray: " + jsonArr);
             for(int i =0; i< jsonArr.length(); i++) {
-                JSONObject jsonMovie = (JSONObject) jsonArr.get(i);
-                Log.d("debugging", "JSONObject: " + jsonMovie);
-                String movieName = (String) jsonMovie.get("title");
-                Log.d("debugging", "Movie name: " + movieName);
-                movies.add(movieName);
+                JSONObject jsonMeteor = (JSONObject) jsonArr.get(i);
+                Log.d("debugging", "JSONObject: " + jsonMeteor);
+                String meteorName = (String) jsonMeteor.get("name");
+                Log.d("debugging", "Meteor name: " + meteorName);
+                meteors.add(meteorName);
             }
         }catch (Exception e){
             System.out.println(e);
             e.printStackTrace();
         }
 
-        return movies;
+        return meteors;
     }
 
 }

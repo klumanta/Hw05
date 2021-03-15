@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView mSearchResultsDisplay;
     private EditText mSearchTermEditText;
-    private Button mMovieButton;
+    private Button mMeteorButton;
     private Button mResetButton;
 
     @Override
@@ -33,25 +33,25 @@ public class MainActivity extends AppCompatActivity {
         // connect with visual elements in activity_main.xml
         mSearchResultsDisplay = (TextView) findViewById(R.id.tv_display_text);
         mSearchTermEditText = (EditText) findViewById(R.id.et_search_box);
-        mMovieButton = (Button) findViewById(R.id.movies_button);
+        mMeteorButton = (Button) findViewById(R.id.meteors_button);
         mResetButton = (Button) findViewById(R.id.reset_button);
 
-        makeMovieNetworkSearchQuery();
+        makeMeteorNetworkSearchQuery();
 
         // Respond to search button
-        mMovieButton.setOnClickListener(
+        mMeteorButton.setOnClickListener(
             new View.OnClickListener(){
                 public void onClick(View v){
                     // Get search string from user
                     String searchText = mSearchTermEditText.getText().toString();
 
                     // Get text from mSearchResultsDisplayText
-                    String movies = mSearchResultsDisplay.getText().toString();
+                    String meteors = mSearchResultsDisplay.getText().toString();
                     // Convert to a list
-                    String[] moviesList = movies.split("\n");
+                    String[] meteorsList = meteors.split("\n");
 
                     // Search for match
-                    for(String name : moviesList){
+                    for(String name : meteorsList){
                         if(name.toLowerCase().equals(searchText.toLowerCase())){
                             mSearchResultsDisplay.setText(name);
                             break;
@@ -67,22 +67,22 @@ public class MainActivity extends AppCompatActivity {
             new View.OnClickListener(){
                 public void onClick(View v){
                     // Reset the text
-                    makeMovieNetworkSearchQuery();
+                    makeMeteorNetworkSearchQuery();
                 }
             }
         );
 
     }
 
-    public void makeMovieNetworkSearchQuery(){
-        new FetchMovieNetworkData().execute();
+    public void makeMeteorNetworkSearchQuery(){
+        new FetchMeteorNetworkData().execute();
     }
 
-    public class FetchMovieNetworkData extends AsyncTask<String, Void, String> {
+    public class FetchMeteorNetworkData extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... params){
             // Get the search term
-            String urlString = "https://www3.nd.edu/~skumar5/teaching/pp-files/mini-movies.json";
+            String urlString = "https://data.nasa.gov/resource/gh4g-9sfh.json";
             URL searchUrl = NetworkUtils.buildUrl(urlString);
 
             // Get the response from the URl
@@ -97,9 +97,9 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String responseData){
-            ArrayList<String> titles = NetworkUtils.parseMoviesJson(responseData); //
+            ArrayList<String> titles = NetworkUtils.parseMeteorsJson(responseData);
             // Display entries in GUI
-            mSearchResultsDisplay.setText("Movie Results:");
+            mSearchResultsDisplay.setText("Meteor Results:");
             for(String title: titles){
                 mSearchResultsDisplay.append("\n\n" + title);
             }
